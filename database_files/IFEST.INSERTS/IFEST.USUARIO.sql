@@ -1,0 +1,10 @@
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Isabella', 'Isabella1', 'JumpingJacks123', '34567891011', 'Isabella@gmail.com', 1, 1234);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Gabriel', 'Gabriel1', 'Burpees456', '34567891012', 'Gabriel@yahoo.com', 2, 5678);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Julia', 'Julia1', 'Squats789', '23456789101', 'Julia@hotmail.com', 3, 9012);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Lucas', 'Lucas1', 'Pushups101112', '34567891210', 'Lucas@outlook.com', 4, 3456);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Mariana', 'Mariana1', 'Lunges131415', '34567891011', 'Mariana@aol.com', 5, 7890);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Pedro', 'Pedro1', 'JumpingJacks123', '34567451011', 'Pedro@gmail.com', 6, 1234);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Ana', 'Ana1', 'Burpees456', '45678910110', 'Ana@hotmail.com', 7, 5678);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Rafael', 'Rafae1l', 'Squats789', '45678910456', 'Rafael@outlook.com', 8, 9012);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Beatriz', 'Beatriz1', 'Pushups101112', '45678123112 ', 'Beatriz@bol.com', 9, 3456);
+insert into ifest.usuario (NM_USUARIO, CD_LOGIN, DS_SENHA, NR_CPF, DS_EMAIL, ID_ENDERECO, NR_ENDERECO) values ('Gustavo', 'Gustavo1', 'Lunges131415', '13456781231 ', 'Gustavo@gmail.com', 10, 7890);
