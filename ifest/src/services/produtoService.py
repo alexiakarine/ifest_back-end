@@ -54,16 +54,16 @@ def recomendacao(usuario: str):
     # df_user = df[df['id_user'] == '383']
     df_user_dpto = df.groupby('class_name').sum()
     df_user_dpto = df_user_dpto.sort_values(by='id_user', ascending=False)
-    query = "select distinct pd.nome_decoracao from ifest.ifest.produto_decoracao pd join ifest.ifest.produto_review pr " \
+    query = "select pd.nome_decoracao, pr.link from ifest.ifest.produto_decoracao pd join ifest.ifest.produto_review pr " \
             f"on pd.id = pr.clothing_id where class_name = '{str(df_user_dpto.index[0])}' limit 5"
     df = pd.read_sql(query, get_postgre())
 
     # obter valores da coluna "nome_decoracao" como uma lista
-    decoracoes = df['nome_decoracao'].to_list()
+    #decoracoes = df['nome_decoracao'].to_list()
     #decoracoes_str = " ".join(decoracoes)
     #decoracoes_str += "#https://static.itdg.com.br/images/1200-630/59e079217cc8af8291a8cb910d1d449f/318825-original.jpg"
 
-    return decoracoes
+    return df
 
 
 def finalizar_carrinho(item: str):

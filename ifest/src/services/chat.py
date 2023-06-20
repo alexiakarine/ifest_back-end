@@ -1,4 +1,4 @@
-from models.chat import Mensagem, Texto, Copiar
+from models.chat import Mensagem, Texto, Copiar, Imagem, Pix
 from services import produtoService, pixService, usuarioService
 from datetime import datetime, date
 
@@ -101,6 +101,10 @@ def menu(recebido, n):
     if any(item in ("decoração", "decoracao") for item in recebido.split(",")):
         recomendacoes = produtoService.recomendacao(str(carrinho['email']))
         contexto = "decoracao"
+        mensagem.adicionar_componente(Texto(valor="Esses são os produtos que recomendamos para você:"))
+        for indice, linha in recomendacoes.iterrows():
+            imagem = Imagem(valor=linha['link'], legenda=linha['nome_decoracao'])
+            mensagem.adicionar_componente(imagem)
 
     if any(item in ("buffet", "comida") for item in recebido.split(",")):
         mensagem.adicionar_componente(Texto(valor="Qual você deseja contratar (valores por convidado):"))
@@ -230,6 +234,7 @@ def local(recebido, n):
 
 
 def finalizar():
+    mensagem = Mensagem()
     c = produtoService.adicionarCarrinho(carrinho)
     if c:
         nome = c["nome"]
@@ -237,25 +242,21 @@ def finalizar():
         data = c["data"]
         cidade = c["cidade"]
 
-        mensagem = f"{nome},\nDados da sua festa: \nQuantidade de Convidados: {convidados} \nData: {data} \nCidade: {cidade} \n\nProdutos Adquiridos:\n"
+        mensagem.adicionar_componente(Texto(valor=f"{nome}, dados da sua festa: "))
+        mensagem.adicionar_componente(Texto(valor=f"Quantidade de Convidados: {convidados} "))
+        mensagem.adicionar_componente(Texto(valor=f"Data: {data} "))
+        mensagem.adicionar_componente(Texto(valor=f"Cidade: {cidade} "))
+        mensagem.adicionar_componente(Texto(valor=f"Produtos Adquiridos:"))
+
         for produto in c["carrinho"]:
-            mensagem += f"{produto['item']} - R${produto['preco']}\n"
+            mensagem.adicionar_componente(Texto(valor=f"{produto['item']} - R${produto['preco']}"))
 
-        mensagem += f"\nVALOR TOTAL:{c['total']} \nAgradecemos por realizar sua festa conosco!"
+        mensagem.adicionar_componente(Texto(valor=f"Valor total: {c['total']} "))
+        mensagem.adicionar_componente(Texto(valor="Agradecemos por realizar sua festa conosco!"))
         pix = pixService.gerarPix()
+        mensagem.adicionar_componente(Pix(valor=pix['qr_code_image'], copia_cola=pix['payload']))
 
-        mensagem_pix = {
-            'mensagem': mensagem,
-            'pix': {
-                'copia_cola': pix['payload'],
-                'codigo_QR': pix['qr_code_image']
-
-            }
-        }
-
-        return mensagem_pix
-
-        return mensagem_pix
+        return mensagem
 
     else:
         return 'Não foi possível finalizar a compra.'

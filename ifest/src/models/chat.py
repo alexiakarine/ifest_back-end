@@ -20,6 +20,7 @@ class Texto(Componente):
 @dataclass
 class Pix(Componente):
     tipo: str = "pix"
+    copia_cola: str = ""
 
 
 @dataclass
