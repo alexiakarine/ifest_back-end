@@ -65,6 +65,9 @@ def recomendacao(usuario: str):
 
     return df
 
+def limpar_carrinho(carrinhoId: str):
+    id = {"_id": ObjectId(carrinhoId)}
+    carrinhodb.delete_one(id)
 
 def finalizar_carrinho(item: str):
     conn = get_postgre()
